@@ -13,5 +13,5 @@
 - I want to know all names, locations, institutions and address in my documents.
 - I want to upload different types of files (CSV, DOC, etc.)
 
-![Modules](C:\Users\ruben\Software_Principles\SmartDocAnalyzer\images\modules.png)
+![Modules](images\modules.png)
 
