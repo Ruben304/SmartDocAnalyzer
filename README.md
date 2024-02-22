@@ -12,3 +12,5 @@
 - I want to discover content from the WEB to enhance story
 - I want to know all names, locations, institutions and address in my documents.
 - I want to upload different types of files (CSV, DOC, etc.)
+
+![module image](C:\Users\ruben\Software_Principles\SmartDocAnalyzer\images\modules.png)
