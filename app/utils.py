@@ -1,5 +1,7 @@
 from flask import current_app as app
 from bson import ObjectId
+from datetime import datetime
+
 
 # script for help functions 
 
@@ -14,7 +16,9 @@ def find_users():
 
 def insert_user(user_data):
     try:
+        user_data['time_created'] = datetime.utcnow()
         result = app.db.users.insert_one(user_data)  
+        
         return result.inserted_id
     except Exception as e:
         print(f"An error occurred: {e}")
