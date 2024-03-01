@@ -1,5 +1,5 @@
 from flask import request, Blueprint, jsonify
-from .utils import find_users, insert_user, serialize_doc
+from .utils import *
 
 # POST = create
 # GET = retrieve
@@ -17,7 +17,7 @@ def users():
     users = find_users()
     return jsonify(users)
 
-@main.route('/users', methods=['Post'])
+@main.route('/user', methods=['POST'])
 def create_user():
     user_data = request.json
     if not user_data:
@@ -25,7 +25,28 @@ def create_user():
 
     result = insert_user(user_data)
     
+    # check for username error 
+    if result == "Username already in use.": 
+        return jsonify({"error": "Username already in use"}), 409 
+    
     if result:
         return jsonify({"message": "User created successfully"}), 201
     else:
         return jsonify({"error": "Failed to create user"}), 500
+
+@main.route('/user/<username>', methods=['GET'])  
+def get_user(username):
+    user = find_user(username)
+    if user:
+        return jsonify(user), 200
+    else:
+        return jsonify({"error": "User not found"}), 404
+
+
+@main.route('/user/<username>', methods=['DELETE'])
+def delete_user(username):
+    result = remove_user(username)
+    if result:
+        return jsonify({"message": "User deleted successfully"}), 200
+    else:
+        return jsonify({"error": "User not found"}), 404
