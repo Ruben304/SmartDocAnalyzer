@@ -13,4 +13,10 @@
 - I want to know all names, locations, institutions and address in my documents.
 - I want to upload different types of files (CSV, DOC, etc.)
 
+### Downloads
+- pip
+- flask
+- pymango
+
+
 ![blocks](images/blocks.png)

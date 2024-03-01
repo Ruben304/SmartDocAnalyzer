@@ -1,13 +1,15 @@
 import json
 from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
+from pymongo import MongoClient
+from .routes import main
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///doc_api.db'
-db = SQLAlchemy(app)
+def create_app():
+    app = Flask(__name__)
+    app.config["MONGO_URI"] = "mongodb://localhost:27017/"
 
-from app import routes
+    client = MongoClient(app.config["MONGO_URI"])
+    app.db = client.doc_analyzer
 
+    app.register_blueprint(main)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    return app
