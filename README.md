@@ -18,5 +18,8 @@
 - flask
 - pymango
 
+### Activate virtual envrionment
+- Type into root directory
+`.\smartDoc\Scripts\activate`
 
 ![blocks](images/blocks.png)
