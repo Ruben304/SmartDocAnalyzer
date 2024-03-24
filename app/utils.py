@@ -60,6 +60,10 @@ def insert_document_metadata(username, filename, file_url):
         print(f"An error occurred while inserting document metadata: {e}")
         return None
     
+def find_documents():
+    documents = app.db.documents.find({})
+    return [serialize_doc(document) for document in documents]
+
 def find_documents_by_username(username):
     documents = app.db.documents.find({"username_uploaded": username})
     return [serialize_doc(document) for document in documents]
