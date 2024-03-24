@@ -25,3 +25,4 @@
 `.\smartDoc\Scripts\activate`
 
 ![blocks](images/blocks.png)
+

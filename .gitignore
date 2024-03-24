@@ -2,4 +2,4 @@ smartDoc/*
 **/__pycache__/
 uploads/*
 app/__pycache__/*
-__pycache__/
+.env
