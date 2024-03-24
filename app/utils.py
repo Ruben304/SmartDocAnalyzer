@@ -1,6 +1,7 @@
 from flask import current_app as app
 from bson import ObjectId
 from datetime import datetime
+from flask_uploads import UploadSet, configure_uploads, IMAGES, DOCUMENTS
 
 
 # script for help functions 
@@ -41,3 +42,24 @@ def remove_user(username):
         return True
     else:
         return False
+    
+def insert_document_metadata(username, filename, file_url):
+    user = find_user(username)
+    doc_metadata = {
+        "username_uploaded": username,  # Link to the user's ObjectId or unique identifier
+        "userID_uploaded": user['_id'],
+        "filename": filename,
+        "file_url":file_url,
+        "upload_date": datetime.utcnow(),
+    }
+    try:
+        # Insert the document metadata into the 'documents' collection
+        documents_result = app.db.documents.insert_one(doc_metadata)
+        return str(documents_result.inserted_id)
+    except Exception as e:
+        print(f"An error occurred while inserting document metadata: {e}")
+        return None
+    
+def find_documents_by_username(username):
+    documents = app.db.documents.find({"username_uploaded": username})
+    return [serialize_doc(document) for document in documents]

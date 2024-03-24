@@ -17,6 +17,8 @@
 - pip
 - flask
 - pymango
+- flask uploads
+- Werkzeug
 
 ### Activate virtual envrionment
 - Type into root directory
