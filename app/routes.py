@@ -1,6 +1,7 @@
 from flask import request, Blueprint, jsonify
 from flask_uploads import UploadSet, configure_uploads, IMAGES, DOCUMENTS
 from werkzeug.utils import secure_filename
+from .task import *
 from .utils import *
 
 # POST = create
@@ -95,3 +96,9 @@ def get_document_by_filename(filename):
         return jsonify(document), 200
     else:
         return jsonify({"error": "Document not found"}), 404
+    
+@main.route('/<filename>/process', methods=['POST'])
+def start_document_process(filename):
+    # Trigger the Celery task
+    task = process_document.delay(filename)
+    return jsonify({"message": "Processing started", "task_id": task.id}), 202

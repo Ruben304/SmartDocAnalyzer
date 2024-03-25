@@ -4,6 +4,14 @@
 - Type into root directory
 `.\smartDoc\Scripts\activate`
 
+#### Requirements in Requirments.txt
+- The requirments are found by typing 
+`pip freeze`
+
+### Start Application
+- To start application, go to root directory and type
+`flask run` or `python run.py`
+
 ### API Routes
 `/users`
 - Get all the users in the collection
@@ -29,9 +37,16 @@
 `/document/<filename>`
 - Get file by filename 
 
+`/<filename>/process`
+- Run a process on a file
+
 ### Activate virtual envrionment
 - Type into root directory
 `.\smartDoc\Scripts\activate`
+
+### Task Queue Implementation
+- To run a celery work, make sure application is already running and type
+`celery -A app.celery worker --loglevel=info`
 
 ### Text summary and NLP
 - Both openai and google nlp are giving me issues
