@@ -87,3 +87,11 @@ def get_user_documents(username):
         return jsonify(user_documents), 200
     else:
         return jsonify({"error": "No documents found for this user"}), 404
+    
+@main.route('/document/<filename>', methods=['GET'])
+def get_document_by_filename(filename):
+    document = find_document_by_filename(filename)
+    if document:
+        return jsonify(document), 200
+    else:
+        return jsonify({"error": "Document not found"}), 404

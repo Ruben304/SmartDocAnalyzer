@@ -67,3 +67,11 @@ def find_documents():
 def find_documents_by_username(username):
     documents = app.db.documents.find({"username_uploaded": username})
     return [serialize_doc(document) for document in documents]
+
+def find_document_by_filename(filename_no_ext):
+    regex_pattern = f"^{filename_no_ext}\.[^\.]+$"  # Matches "filename.extension"
+    document = app.db.documents.find_one({"filename": {"$regex": regex_pattern}})
+    if document:
+        return serialize_doc(document)
+    else:
+        return None

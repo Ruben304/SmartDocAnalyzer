@@ -1,5 +1,42 @@
 # SmartDocAnalyzer
 
+### Activate virtual envrionment
+- Type into root directory
+`.\smartDoc\Scripts\activate`
+
+### API Routes
+`/users`
+- Get all the users in the collection
+
+`/user`
+- Create a user
+
+`/user/<username> ["GET"]`
+- Get information about specific user
+
+`/user/<username> ["DELETE"]`
+- Delete infromation about a specific user
+
+`/user/<username>/upload`
+- Upload a file 
+
+`/documents`
+- Get all documents in the collection
+
+`/user/<username>/documents`
+- Get all the documents from a specific user
+
+`/document/<filename>`
+- Get file by filename 
+
+### Activate virtual envrionment
+- Type into root directory
+`.\smartDoc\Scripts\activate`
+
+### Text summary and NLP
+- Both openai and google nlp are giving me issues
+
+### Guidelines
 - I should login to a secure service to upload my content
 - I should be able to upload documents
 - I should be able to upload PDFs or images.  The application should translate my documents to text
@@ -12,17 +49,6 @@
 - I want to discover content from the WEB to enhance story
 - I want to know all names, locations, institutions and address in my documents.
 - I want to upload different types of files (CSV, DOC, etc.)
-
-### Downloads
-- pip
-- flask
-- pymango
-- flask uploads
-- Werkzeug
-
-### Activate virtual envrionment
-- Type into root directory
-`.\smartDoc\Scripts\activate`
 
 ![blocks](images/blocks.png)
 
